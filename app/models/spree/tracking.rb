@@ -1,12 +1,6 @@
 module Spree
   class Tracking < Spree::Base
 
-    # Serialization
-    serialize :entity_errors, JSON
-    serialize :flash, JSON
-    serialize :request_parameters, JSON
-    serialize :updated_parameters, JSON
-
     # Associations
     belongs_to :user, required: true
 

@@ -54,7 +54,7 @@
       <tr>
         <td><b><%= Spree.t(:entity_errors, scope: :spree_tracking) %></b></td>
         <td>
-          <pre><%= pretty_json(@tracking.entity_errors) %></pre>
+          <pre><%= JSON.pretty_generate(@tracking.entity_errors) %></pre>
         </td>
       </tr>
     <% end %>
@@ -63,7 +63,7 @@
       <tr>
         <td><b><%= Spree.t(:flash, scope: :spree_tracking) %></b></td>
         <td>
-          <pre><%= pretty_json(@tracking.flash) %></pre>
+          <pre><%= JSON.pretty_generate(@tracking.flash) %></pre>
         </td>
       </tr>
     <% end %>
@@ -71,7 +71,7 @@
     <tr>
       <td><b><%= Spree.t(:request_parameters, scope: :spree_tracking) %></b></td>
       <td>
-        <pre><%= pretty_json(@tracking.request_parameters) %></pre>
+        <pre><%= JSON.pretty_generate(@tracking.request_parameters) %></pre>
       </td>
     </tr>
 
@@ -79,7 +79,7 @@
       <tr>
         <td><b><%= Spree.t(:updated_parameters, scope: :spree_tracking) %></b></td>
         <td>
-          <pre><%= pretty_json(@tracking.updated_parameters) %></pre>
+          <pre><%= JSON.pretty_generate(@tracking.updated_parameters) %></pre>
         </td>
       </tr>
     <% end %>

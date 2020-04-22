@@ -5,7 +5,7 @@ module Spree
       def index
         params[:q] ||= {}
         @search = Spree::Tracking.eager_load(:user).order(created_at: :desc).ransack(params[:q])
-        @trackings = @search.result(distinct: true).page(params[:page]).per(params[:per_page] || Spree::Config[:admin_trackings_per_page])
+        @trackings = @search.result.page(params[:page]).per(params[:per_page] || Spree::Config[:admin_trackings_per_page])
       end
 
       def show
