@@ -1,6 +1,5 @@
 module Spree
   module Trackable
-
     extend ActiveSupport::Concern
 
     included do
@@ -13,11 +12,11 @@ module Spree
     private
 
     def track_changes?
-      ( !request.get? || adjustment_request ) && try_spree_current_user.admin? && try_spree_current_user.present?
+      (!request.get? || adjustment_request) && try_spree_current_user.present? && try_spree_current_user.admin?
     end
 
     def adjustment_request
-      request['action'].in? ['close_adjustments', 'open_adjustments']
+      request['action'].in? %w[close_adjustments open_adjustments]
     end
 
     def store_request_params
@@ -48,20 +47,17 @@ module Spree
     end
 
     def object_errors
-      begin
-        if trackable_object.errors.messages.values.compact.reject(&:blank?).present?
-          trackable_object.errors.messages
-        else
-          {}
-        end
-      rescue
+      if trackable_object.errors.messages.values.compact.reject(&:blank?).present?
+        trackable_object.errors.messages
+      else
         {}
       end
+    rescue StandardError
+      {}
     end
 
     def trackable_object
       @object || instance_variable_get('@' + controller_name.singularize)
     end
-
   end
 end
