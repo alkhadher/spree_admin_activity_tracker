@@ -24,7 +24,7 @@
         <div class="form-group">
           <%= f.label :created_at_gt, Spree.t(:actions_performed_from, scope: :spree_tracking) %>
           <div class="input-group">
-            <%= f.text_field :created_at_gt, class: 'datepicker datepicker-from form-control js-filterable', value: datepicker_field_value(params[:q][:created_at_gt].try(:to_datetime)), placeholder: Spree.t(:from, scope: :spree_tracking).capitalize %>
+            <%= f.text_field :created_at_gt, class: 'datetimepicker datepicker-from form-control js-filterable', value: datepicker_field_value(params[:q][:created_at_gt].try(:to_datetime)), placeholder: Spree.t(:from, scope: :spree_tracking).capitalize %>
             <span class="input-group-addon">
               <i class="icon icon-calendar"></i>
             </span>
@@ -35,7 +35,7 @@
         <div class="form-group">
           <%= f.label :created_at_lt, Spree.t(:actions_performed_upto, scope: :spree_tracking) %>
           <div class="input-group">
-            <%= f.text_field :created_at_lt, class: 'datepicker datepicker-to form-control js-filterable', value: datepicker_field_value(params[:q][:created_at_lt].try(:to_datetime)), placeholder: Spree.t(:upto, scope: :spree_tracking) %>
+            <%= f.text_field :created_at_lt, class: 'datetimepicker datepicker-to form-control js-filterable', value: datepicker_field_value(params[:q][:created_at_lt].try(:to_datetime)), placeholder: Spree.t(:upto, scope: :spree_tracking) %>
             <span class="input-group-addon">
               <i class="icon icon-calendar"></i>
             </span>
@@ -53,8 +53,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :request_parameters_cont, Spree.t(:request_parameters_cont, scope: :spree_tracking) %>
-          <%= f.text_field :request_parameters_cont, class: 'form-control js-filterable' %>
+          <%= f.label :request_parameters_contains, Spree.t(:request_parameters_contains, scope: :spree_tracking) %>
+          <%= f.text_field :request_parameters_contains, class: 'form-control js-filterable' %>
         </div>
       </div>
     </div>
@@ -62,14 +62,29 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :entity_errors_cont, Spree.t(:entity_errors_cont, scope: :spree_tracking) %>
-          <%= f.text_field :entity_errors_cont, class: 'form-control js-filterable' %>
+          <%= f.label :flash_message_contains, Spree.t(:flash_message_contains, scope: :spree_tracking) %>
+          <%= f.text_field :flash_message_contains, class: 'form-control js-filterable' %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :flash_cont, Spree.t(:flash_cont, scope: :spree_tracking) %>
-          <%= f.text_field :flash_cont, class: 'form-control js-filterable' %>
+          <%= f.label :controller_contains, Spree.t(:controller_contains, scope: :spree_tracking) %>
+          <%= f.text_field :controller_contains, class: 'form-control js-filterable' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :action_type, Spree.t(:action_type, scope: :spree_tracking) %>
+          <%= f.text_field :action_type, class: 'form-control js-filterable js-quick-search-target' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :entity_id_eq, Spree.t(:entity_id, scope: :spree_tracking) %>
+          <%= f.text_field :entity_id_eq, class: 'form-control js-filterable js-quick-search-target' %>
         </div>
       </div>
     </div>
