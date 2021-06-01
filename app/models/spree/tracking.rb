@@ -52,7 +52,7 @@ module Spree
     end
 
     def controller
-      @controller ||= request_parameters[:controller].gsub('spree/', '')
+      @controller ||= request_parameters[:controller]&.gsub('spree/', '')
     end
 
     def action
